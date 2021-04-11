@@ -28,7 +28,7 @@ int TimeMenager::getInscribedDate()
             return convertDateToInt(loadDate);
             break;
         }
-        else cout << "Wprawdzono niepoprawny format daty. Sprobuj ponownie." << endl;
+        else cout << "Wprawdzono niepoprawny format daty. Sprobuj ponownie: ";
     }
 }
 int TimeMenager::setCurrentMonthStartDate(string inputDate)
@@ -202,7 +202,7 @@ int TimeMenager::calculateDaysInMonth(int monthNumber, int year)
 
 bool TimeMenager::isDataValidate (string inputDate)
 {
-    if (inputDate.length() != 10) throw invalid_argument("Niepoprawny format daty !");
+    if (inputDate.length() != 10) cout << "Niepoprawny format daty !";
     else
     {
     unsigned int intYear = extractYearFromData(inputDate);
@@ -210,8 +210,11 @@ bool TimeMenager::isDataValidate (string inputDate)
     unsigned int intDay = extractDayFromData(inputDate);
 
     if ((compareRangeOfYears(intYear) && compareRangeOfMonths(intMonth) && compareRangeOfDays(intDay)) != false)
-    return true;
-
+    {
+        if (intMonth == 2 && leapYear(intYear) == false && intDay > 28)
+        return false;
+        else return true;
+    }
     else return false;
     }
 }

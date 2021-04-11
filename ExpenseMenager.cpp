@@ -51,7 +51,7 @@ Expense ExpenseMenager::getSingleExpenseData()
             cout << "Niepoprawny wybor. Sprobuj ponownie:";
     }
 
-    cout << "Podaj zrodlo wydatku: ";
+    cout << "Podaj cel wydatku: ";
     expense.setExpensePurpose(auxiliaryMethods::loadInputLine());
 
     cout << "Podaj kwote wydatku [PLN]: ";
